@@ -21,31 +21,39 @@
 // 5. Log to the console whether there is any dog eating EXACTLY the amount of food that is recommended(just true or false)
 // 6. Log to the console whether there is any dog eating an OKAY amount of food(just true or false)
 // 7. Create an array containing the dogs that are eating an OKAY amount of food(try to reuse the condition used in 6.)
-// 8. Create a shallow copy of the dogs array and sort it by recommended food portion in an ascending order(keep in mind that the portions are inside the array's objects)
+// // 8. Create a shallow copy of the dogs array and sort it by recommended food portion in an ascending order(keep in mind that the portions are inside the array's objects)
 
-// HINT 1: Use many different tools to solve these challenges, you can use the summary lecture to choose between them 😉
-//     HINT 2: Being within a range 10 % above and below the recommended portion means: current > (recommended * 0.90) && current < (recommended * 1.10).Basically, the current portion should be between 90 % and 110 % of the recommended portion.
+// // HINT 1: Use many different tools to solve these challenges, you can use the summary lecture to choose between them 😉
+// //     HINT 2: Being within a range 10 % above and below the recommended portion means: current > (recommended * 0.90) && current < (recommended * 1.10).Basically, the current portion should be between 90 % and 110 % of the recommended portion.
 
-// TEST DATA:
-const dogs = [
-    { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
-    { weight: 8, curFood: 200, owners: ['Matilda'] },
-    { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
-    { weight: 32, curFood: 340, owners: ['Michael'] }
-];
+// // TEST DATA:
+// const dogs = [
+//     { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+//     { weight: 8, curFood: 200, owners: ['Matilda'] },
+//     { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+//     { weight: 32, curFood: 340, owners: ['Michael'] }
+// ];
 
-dogs.forEach((dog) => {
-    dog.recommendedFood = dog.weight * 0.75 * 28;
-})
-console.log(dogs);
-dogs.map(dog => {
-    if (dog.owners.includes('Sarah')) {
-        if (dog.curFood > dog.recommendedFood) {
-            console.log("Sarah's Dog Eating too much");
-        }
-        else {
-            console.log("Sarah's Dog Eating too less");
-        }
-    }
-    return dog;
-});
+// dogs.forEach((dog) => {
+//     dog.recommendedFood = dog.weight * 0.75 * 28;
+// })
+// console.log(dogs);
+// dogs.map(dog => {
+//     if (dog.owners.includes('Sarah')) {
+//         if (dog.curFood > dog.recommendedFood) {
+//             console.log("Sarah's Dog Eating too much");
+//         }
+//         else {
+//             console.log("Sarah's Dog Eating too less");
+//         }
+//     }
+//     return dog;
+// });
+
+// Random number b/w two numbers
+// const randomNumber = (a, b) => (Math.trunc(Math.random() * (b - a) + 1) + a)
+
+
+// console.log(randomNumber(5, 100));
+
+
