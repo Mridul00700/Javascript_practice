@@ -57,3 +57,32 @@
 // console.log(randomNumber(5, 100));
 
 
+// console.log(2 ** 53 - 1);
+// console.log(Number.MAX_SAFE_INTEGER);
+// // const a = 9007199254740992
+// console.log(2 ** 53 + 1);
+// console.log(2 ** 53 + 2);
+// console.log(2 ** 53 + 3);
+// console.log(2 ** 53 + 4);
+
+// console.log(2312312123123123123123123123123n);
+
+// const now = new Date();
+// console.log(now);
+
+// console.log(new Date('Jun 16 2021 15:51:06'));
+
+// console.log(new Date(0));
+// const future = new Date(2037, 10, 9, 5, 23);
+
+// console.log(future);
+// console.log(future.getFullYear());
+// console.log(future.getMonth());
+// console.log(future.getDate());
+// console.log(future.getDay());
+// console.log(future.toISOString());
+// console.log(future.getTime());
+// console.log(Date.now());
+// future.setFullYear(2040)
+// console.log(future);
+
