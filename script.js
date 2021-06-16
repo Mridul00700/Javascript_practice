@@ -86,3 +86,9 @@
 // future.setFullYear(2040)
 // console.log(future);
 
+// Date Difference -
+
+// 
+
+
+// console.log(calcDays(new Date(2037, 3, 14), new Date(2037, 3, 24)));
