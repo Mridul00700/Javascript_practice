@@ -92,3 +92,20 @@
 
 
 // console.log(calcDays(new Date(2037, 3, 14), new Date(2037, 3, 24)));
+
+//  Nummber Format --
+
+const num = 2312123123.23;
+
+const options = {
+    style: "currency", // currency or percent or unit
+    // unit: "kilometer-per-hour"
+    currency: 'INR',
+    // useGrouping: false
+}
+
+console.log(new Intl.NumberFormat('en-US', options).format(num));
+console.log(new Intl.NumberFormat('en-GB', options).format(num));
+console.log(new Intl.NumberFormat('en-IN', options).format(num));
+console.log(new Intl.NumberFormat('de-DE', options).format(num));
+console.log(new Intl.NumberFormat(navigator.language, options).format(num));
