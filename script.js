@@ -144,3 +144,12 @@
 // document.getElementsByTagName('button');
 // document.getElementsByClassName('btn');
 
+// creating and inserting elements 
+// .insertAdjacentHTML
+
+// object that represent dom element -->
+const ele = document.createElement('div');
+
+ele.classList.add('cookie-message');
+// ele.textContent = "We use cookies to improve funcationality and analytics."
+ele.innerHTML = 'We use cookies to improve funcationality and analytics. <button class= "btn btn--close-cookie" > Got it! </button > '
