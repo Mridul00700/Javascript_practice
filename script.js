@@ -121,10 +121,26 @@
 
 // }
 
-// setInterval 
-// clock --->
-setInterval(() => {
-    const now = new Date();
-    console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
-}, 1000);
+// // setInterval 
+// // clock --->
+// setInterval(() => {
+//     const now = new Date();
+//     console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
+// }, 1000);
+
+
+// // DOM -->
+
+// console.log(document.documentElement);
+
+// // Return first element with .header selector   . for class and # for ID 
+// document.querySelector('.header');
+
+// //  Return All the elements with .header selector (Node List)
+// document.querySelectorAll('header');
+
+// document.getElementById('section');
+// //  Returns HTML collection not nodeList... Live list, any changes are reflected here immediately   
+// document.getElementsByTagName('button');
+// document.getElementsByClassName('btn');
 
