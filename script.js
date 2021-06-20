@@ -152,4 +152,7 @@ const ele = document.createElement('div');
 
 ele.classList.add('cookie-message');
 // ele.textContent = "We use cookies to improve funcationality and analytics."
+const header = document.querySelector('.header');
 ele.innerHTML = 'We use cookies to improve funcationality and analytics. <button class= "btn btn--close-cookie" > Got it! </button > '
+
+header.prepend(ele);
