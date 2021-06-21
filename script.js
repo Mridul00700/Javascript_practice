@@ -148,24 +148,43 @@
 // .insertAdjacentHTML
 
 // // object that represent dom element -->
-// const ele = document.createElement('div');
+const ele = document.createElement('div');
 
-// ele.classList.add('cookie-message');
-// // ele.textContent = "We use cookies to improve funcationality and analytics."
-// const header = document.querySelector('.header');
-// ele.innerHTML = 'We use cookies to improve funcationality and analytics. <button class= "btn btn--close-cookie" > Got it! </button > '
+ele.classList.add('cookie-message');
+// ele.textContent = "We use cookies to improve funcationality and analytics."
+const header = document.querySelector('.header');
+ele.innerHTML = 'We use cookies to improve funcationality and analytics. <button class= "btn btn--close-cookie" > Got it! </button > '
 
-// // header.prepend(ele);
-// header.append(ele);
-// // header.append(ele.cloneNode(true));
+// header.prepend(ele);
+header.append(ele);
+// header.append(ele.cloneNode(true));
 
-// // header.before(ele);
-// // header.after(ele);
+// header.before(ele);
+// header.after(ele);
 
-// // Delete Elements
+// Delete Elements
 
-// document.querySelector('.btn--close-cookie').addEventListener('click', () => {
-//     ele.remove();
-//     // ele.parentElement.removeChild(ele);  --> Dom traversing 
-// })
+document.querySelector('.btn--close-cookie').addEventListener('click', () => {
+    ele.remove();
+    // ele.parentElement.removeChild(ele);  --> Dom traversing 
+})
+// inline styles
+ele.style.backgroundColor = '#37383d';
+ele.style.width = '120%';
+// Hidden class not inline
+console.log(ele.style.height);
+// InLine style
+console.log(ele.style.backgroundColor);
+// Accessing hidden style under class
+console.log(getComputedStyle(ele).color);
+console.log(getComputedStyle(ele).height);
+
+ele.style.height = Number.parseFloat(getComputedStyle(ele).height, 10) + 30 + "px"
+
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+
+
+
 
