@@ -111,93 +111,112 @@
 // console.log(new Intl.NumberFormat(navigator.language, options).format(num));
 
 
-// const ingredients = ["olives", "pineapple"];
+// // const ingredients = ["olives", "pineapple"];
 
-// const arrival = setTimeout((ing1, ing2) => console.log(`Your Pizza is here, with ${ing1} and ${ing2}`), 3000, ...ingredients);
-// console.log("waiting..");
+// // const arrival = setTimeout((ing1, ing2) => console.log(`Your Pizza is here, with ${ing1} and ${ing2}`), 3000, ...ingredients);
+// // console.log("waiting..");
 
-// if (ingredients.includes('pineapple')) {
-//     clearTimeout(arrival);
+// // if (ingredients.includes('pineapple')) {
+// //     clearTimeout(arrival);
 
+// // }
+
+// // // setInterval 
+// // // clock --->
+// // setInterval(() => {
+// //     const now = new Date();
+// //     console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
+// // }, 1000);
+
+
+// // // DOM -->
+
+// // console.log(document.documentElement);
+
+// // // Return first element with .header selector   . for class and # for ID 
+// // document.querySelector('.header');
+
+// // //  Return All the elements with .header selector (Node List)
+// // document.querySelectorAll('header');
+
+// // document.getElementById('section');
+// // //  Returns HTML collection not nodeList... Live list, any changes are reflected here immediately   
+// // document.getElementsByTagName('button');
+// // document.getElementsByClassName('btn');
+
+// // creating and inserting elements 
+// // .insertAdjacentHTML
+
+// // // object that represent dom element -->
+// const ele = document.createElement('div');
+
+// ele.classList.add('cookie-message');
+// // ele.textContent = "We use cookies to improve funcationality and analytics."
+// const header = document.querySelector('.header');
+// ele.innerHTML = 'We use cookies to improve funcationality and analytics. <button class= "btn btn--close-cookie" > Got it! </button > '
+
+// // header.prepend(ele);
+// header.append(ele);
+// // header.append(ele.cloneNode(true));
+
+// // header.before(ele);
+// // header.after(ele);
+
+// // Delete Elements
+
+// document.querySelector('.btn--close-cookie').addEventListener('click', () => {
+//     ele.remove();
+//     // ele.parentElement.removeChild(ele);  --> Dom traversing 
+// })
+// // inline styles
+// ele.style.backgroundColor = '#37383d';
+// ele.style.width = '120%';
+// // Hidden class not inline
+// console.log(ele.style.height);
+// // InLine style
+// console.log(ele.style.backgroundColor);
+// // Accessing hidden style under class
+// console.log(getComputedStyle(ele).color);
+// console.log(getComputedStyle(ele).height);
+
+// ele.style.height = Number.parseFloat(getComputedStyle(ele).height, 10) + 30 + "px"
+
+
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// const img = document.querySelector('.img');
+
+// console.log(img.dataset.versionNumber);
+// // ele.classList.add('c')
+// // ele.classList.remove('c')
+// // ele.classList.toggle('c')
+// // ele.classList.contains('c')
+
+
+//  // Dont use... Overwright the class whatever is already there
+// // ele.className = "Mri"
+
+// Event - EventHandlers -->
+
+
+const h1 = document.querySelector('h1');
+// mouseenter = hover
+
+const event1 = (e) => {
+    alert('addEventListner : Heading');
+
+    h1.removeEventListener('mouseenter', event1)
+}
+
+h1.addEventListener('mouseenter', event1);
+
+
+// Advantage of using oneventhandler --- 1) Multiple listeners on same elements..  2) Remove listners incase we don't need it..
+
+// Old way -->
+// h1.onmouseenter = (e) => {
+//     alert('addEventListner : Heading');
 // }
-
-// // setInterval 
-// // clock --->
-// setInterval(() => {
-//     const now = new Date();
-//     console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
-// }, 1000);
-
-
-// // DOM -->
-
-// console.log(document.documentElement);
-
-// // Return first element with .header selector   . for class and # for ID 
-// document.querySelector('.header');
-
-// //  Return All the elements with .header selector (Node List)
-// document.querySelectorAll('header');
-
-// document.getElementById('section');
-// //  Returns HTML collection not nodeList... Live list, any changes are reflected here immediately   
-// document.getElementsByTagName('button');
-// document.getElementsByClassName('btn');
-
-// creating and inserting elements 
-// .insertAdjacentHTML
-
-// // object that represent dom element -->
-const ele = document.createElement('div');
-
-ele.classList.add('cookie-message');
-// ele.textContent = "We use cookies to improve funcationality and analytics."
-const header = document.querySelector('.header');
-ele.innerHTML = 'We use cookies to improve funcationality and analytics. <button class= "btn btn--close-cookie" > Got it! </button > '
-
-// header.prepend(ele);
-header.append(ele);
-// header.append(ele.cloneNode(true));
-
-// header.before(ele);
-// header.after(ele);
-
-// Delete Elements
-
-document.querySelector('.btn--close-cookie').addEventListener('click', () => {
-    ele.remove();
-    // ele.parentElement.removeChild(ele);  --> Dom traversing 
-})
-// inline styles
-ele.style.backgroundColor = '#37383d';
-ele.style.width = '120%';
-// Hidden class not inline
-console.log(ele.style.height);
-// InLine style
-console.log(ele.style.backgroundColor);
-// Accessing hidden style under class
-console.log(getComputedStyle(ele).color);
-console.log(getComputedStyle(ele).height);
-
-ele.style.height = Number.parseFloat(getComputedStyle(ele).height, 10) + 30 + "px"
-
-
-document.documentElement.style.setProperty('--color-primary', 'orangered');
-
-const img = document.querySelector('.img');
-
-console.log(img.dataset.versionNumber);
-// ele.classList.add('c')
-// ele.classList.remove('c')
-// ele.classList.toggle('c')
-// ele.classList.contains('c')
-
-
- // Dont use... Overwright the class whatever is already there
-// ele.className = "Mri"
-
-
-
 
 
 
