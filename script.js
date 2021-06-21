@@ -184,6 +184,22 @@ ele.style.height = Number.parseFloat(getComputedStyle(ele).height, 10) + 30 + "p
 
 document.documentElement.style.setProperty('--color-primary', 'orangered');
 
+const img = document.querySelector('.img');
+
+console.log(img.dataset.versionNumber);
+// ele.classList.add('c')
+// ele.classList.remove('c')
+// ele.classList.toggle('c')
+// ele.classList.contains('c')
+
+
+ // Dont use... Overwright the class whatever is already there
+// ele.className = "Mri"
+
+
+
+
+
 
 
 
