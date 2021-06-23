@@ -254,3 +254,4 @@ console.log(div.parentElement.children);
     }
 })
 
+// Tab Component 
