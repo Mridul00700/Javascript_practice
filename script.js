@@ -170,56 +170,87 @@
 // })
 // // inline styles
 // ele.style.backgroundColor = '#37383d';
-// ele.style.width = '120%';
-// // Hidden class not inline
-// console.log(ele.style.height);
-// // InLine style
-// console.log(ele.style.backgroundColor);
-// // Accessing hidden style under class
-// console.log(getComputedStyle(ele).color);
-// console.log(getComputedStyle(ele).height);
+// // ele.style.width = '120%';
+// // // Hidden class not inline
+// // console.log(ele.style.height);
+// // // InLine style
+// // console.log(ele.style.backgroundColor);
+// // // Accessing hidden style under class
+// // console.log(getComputedStyle(ele).color);
+// // console.log(getComputedStyle(ele).height);
 
-// ele.style.height = Number.parseFloat(getComputedStyle(ele).height, 10) + 30 + "px"
-
-
-// document.documentElement.style.setProperty('--color-primary', 'orangered');
-
-// const img = document.querySelector('.img');
-
-// console.log(img.dataset.versionNumber);
-// // ele.classList.add('c')
-// // ele.classList.remove('c')
-// // ele.classList.toggle('c')
-// // ele.classList.contains('c')
+// // ele.style.height = Number.parseFloat(getComputedStyle(ele).height, 10) + 30 + "px"
 
 
-//  // Dont use... Overwright the class whatever is already there
-// // ele.className = "Mri"
+// // document.documentElement.style.setProperty('--color-primary', 'orangered');
 
-// Event - EventHandlers -->
+// // const img = document.querySelector('.img');
 
-
-const h1 = document.querySelector('h1');
-// mouseenter = hover
-
-const event1 = (e) => {
-    alert('addEventListner : Heading');
-
-    h1.removeEventListener('mouseenter', event1)
-}
-
-h1.addEventListener('mouseenter', event1);
+// // console.log(img.dataset.versionNumber);
+// // // ele.classList.add('c')
+// // // ele.classList.remove('c')
+// // // ele.classList.toggle('c')
+// // // ele.classList.contains('c')
 
 
-// Advantage of using oneventhandler --- 1) Multiple listeners on same elements..  2) Remove listners incase we don't need it..
+// //  // Dont use... Overwright the class whatever is already there
+// // // ele.className = "Mri"
 
-// Old way -->
-// h1.onmouseenter = (e) => {
+// // Event - EventHandlers -->
+
+
+// const h1 = document.querySelector('h1');
+// // mouseenter = hover
+
+// const event1 = (e) => {
 //     alert('addEventListner : Heading');
+
 // }
 
+// h1.addEventListener('mouseenter', event1);
+
+// setTimeout(() => h1.removeEventListener('mouseenter', event1), 10000)
+
+
+// // Advantage of using oneventhandler --- 1) Multiple listeners on same elements..  2) Remove listners incase we don't need it..
+
+// // Old way -->
+// // h1.onmouseenter = (e) => {
+// //     alert('addEventListner : Heading');
+// // }
 
 
 
 
+// Dom trversing -->>
+
+const div = document.querySelector('.main-div');
+
+// Downwards ---> 
+console.log(div.querySelectorAll('.span'));
+console.log(div.childNodes);
+console.log(div.children);
+
+div.firstElementChild.style.color = "white";
+div.lastElementChild.style.color = "black";
+
+//  Upwards ---> Parents 
+console.log(div.parentElement);
+div.closest('.header').style.background = 'var(--gradient-secondary)';
+
+// Sideways -- siblings  only direct --- left or right / previous or next
+
+console.log(div.previousElementSibling);
+console.log(div.nextElementSibling);
+
+console.log(div.previousSibling);
+console.log(div.nextSibling);
+
+
+console.log(div.parentElement.children);
+[...div.parentElement.children].forEach(el => {
+    if (el !== div) {
+        el.style.transform = 'scale(0.5)'
+    }
+})
 
