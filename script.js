@@ -338,3 +338,12 @@ console.log(mridul.__proto__.__proto__.__proto__);
 // console.log(Person.prototype.constructor);
 console.dir(Person.prototype.constructor);
 
+//  prototype of array -->>
+const arr = [3, 4, 5, 3, 6, 9, 77, 2,];  // [] => shorthand for new Array same as {} shorthand for new Object
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+console.log(arr.__proto__.__proto__);
+console.log(arr.__proto__.__proto__ === Object.prototype);
+console.log(arr.__proto__.__proto__.__proto__);
+
+//  Hence all the build in methods are just reused by prototypal inheritance..
