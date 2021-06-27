@@ -259,10 +259,15 @@
 // Arrow function cannot work as constructor function as we need this keyword....
 
 const Person = function (firstname, birthYear) {
-
+    // Instance properties
     this.firstname = firstname;
     this.birthYear = birthYear;
     //     this.super();
+
+    // Never do this --->> method inside constructor function...
+    this.calcAge = function () {
+        console.log(2021 - this.birthYear);
+    };
 }
 
 const mridul = new Person('Mridul', 1995);
@@ -280,3 +285,6 @@ console.log(jay instanceof Person);
 // 2. function is called and this keyword is set to this newly created object..  this = {}
 // 3. new {} linked to prototype .. 
 // 4. function automatically returns empty {} which need not to be empty...
+
+
+//  Prototypes 
