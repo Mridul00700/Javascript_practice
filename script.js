@@ -333,3 +333,8 @@ console.log(mridul.__proto__);
 console.log(mridul.__proto__.__proto__);
 // Null
 console.log(mridul.__proto__.__proto__.__proto__);
+
+// Will point back to Person itself (Person.prototype.constructor)
+// console.log(Person.prototype.constructor);
+console.dir(Person.prototype.constructor);
+
