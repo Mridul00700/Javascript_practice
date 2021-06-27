@@ -258,99 +258,152 @@
 // Constructor Function ---
 // Arrow function cannot work as constructor function as we need this keyword....
 
-const Person = function (firstname, birthYear) {
-    // Instance properties
-    this.firstname = firstname;
-    this.birthYear = birthYear;
-    // return super;
-    //     this.super();
+// const Person = function (firstname, birthYear) {
+//     // Instance properties
+//     this.firstname = firstname;
+//     this.birthYear = birthYear;
+//     // return super;
+//     //     this.super();
 
-    // Never do this --->> method inside constructor function...
-    // this.calcAge = function () {
-    //     console.log(2021 - this.birthYear);
-    // };
+//     // Never do this --->> method inside constructor function...
+//     // this.calcAge = function () {
+//     //     console.log(2021 - this.birthYear);
+//     // };
+// }
+
+// const mridul = new Person('Mridul', 1995);
+// console.log(mridul);
+
+
+
+// const achyut = new Person('Achyut', 1994);
+// console.log(achyut);
+// const jay = {};
+
+// console.log(mridul instanceof Person);
+// console.log(jay instanceof Person);
+
+// // 1. empty object is created  New {} is created
+// // 2. function is called and this keyword is set to this newly created object..  this = {}
+// // 3. new {} linked to prototype .. 
+// // 4. function automatically returns empty {} which need not to be empty...
+
+
+// //  Prototypes  - all the objects created from constructor function will inherit prototype property... as all functions
+// //  even constructor function has prototype property on them. 
+
+
+// console.log(Person.prototype);
+// Person.prototype.calcAge = function () {
+//     console.log(2021 - this.birthYear);
+// };
+
+// // As calcAge will be avaliable to every object created through Person constructor function, through inheritance
+// mridul.calcAge();
+// achyut.calcAge();
+// // We have access to calcAge function because of protytypal inheritance-- it's not present in object.
+// console.log(mridul);
+
+// // By utilising prototypal inheritance we only create one copy of calAge function for all the objects created from Person 
+// // Constructor function.
+
+// // Every object has prototype property 
+
+// //  new keyword creates proto property on empty objects and sets it to prototype property of Person(constructor function) 
+// console.log(mridul.__proto__);
+// console.log(mridul.__proto__ === Person.prototype);
+
+// console.log(Person.prototype.isPrototypeOf(mridul));
+// console.log(Person.prototype.isPrototypeOf(achyut));
+// console.log(Person.prototype.isPrototypeOf(Person));
+
+// // We can set properties too not only functions
+
+// Person.prototype.species = "Homo Sapiens"
+// console.log(mridul);
+// console.log(mridul.species);
+// // Not it's own property--- just has prototypal inheritance from Person constructor function
+// console.log(mridul.hasOwnProperty('firstname'));
+// console.log(mridul.hasOwnProperty('species'));
+
+
+// //mridul.protoype 
+// console.log(mridul.__proto__);
+// // Object.prototype (Top of prototype chain)
+// console.log(mridul.__proto__.__proto__);
+// // Null
+// console.log(mridul.__proto__.__proto__.__proto__);
+
+// // Will point back to Person itself (Person.prototype.constructor)
+// // console.log(Person.prototype.constructor);
+// console.dir(Person.prototype.constructor);
+
+// //  prototype of array -->>
+// const arr = [3, 4, 5, 3, 6, 9, 77, 2, 4, 6, 5, 77, 8];  // [] => shorthand for new Array same as {} shorthand for new Object
+// console.log(arr.__proto__);
+// console.log(arr.__proto__ === Array.prototype);
+// console.log(arr.__proto__.__proto__);
+// console.log(arr.__proto__.__proto__ === Object.prototype);
+// console.log(arr.__proto__.__proto__.__proto__);
+
+// //  Hence all the build in methods are just reused by prototypal inheritance..
+
+// //  We can ourselves add methods that will work on all arrays that is created using Array /(or) [] constructor function
+// Array.prototype.unique = function () {
+//     return [...new Set(this)];
+// }
+// // New property to array itself like any other default function as - map forEach filter etc (etcetra);
+// console.log(arr.unique());
+
+
+// //
+// const h1 = document.querySelector('.main');
+// console.dir(x => x + 1);
+
+// Coading
+
+/*
+1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
+2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console;
+3. Implement a 'brake' method that will decrease the car's speed by 5, and log the new speed to the console;
+4. Create 2 car objects and experiment with calling 'accelerate' and 'brake' multiple times on each of them.
+
+DATA CAR 1: 'BMW' going at 120 km/h
+DATA CAR 2: 'Mercedes' going at 95 km/h
+
+GOOD LUCK 😀
+*/
+
+const Car = function (make, speed) {
+    this.make = make;
+    this.speed = speed;
 }
 
-const mridul = new Person('Mridul', 1995);
-console.log(mridul);
+const car1 = new Car("BMW", 120);
+const car2 = new Car("Mercedes", 95);
 
-
-
-const achyut = new Person('Achyut', 1994);
-console.log(achyut);
-const jay = {};
-
-console.log(mridul instanceof Person);
-console.log(jay instanceof Person);
-
-// 1. empty object is created  New {} is created
-// 2. function is called and this keyword is set to this newly created object..  this = {}
-// 3. new {} linked to prototype .. 
-// 4. function automatically returns empty {} which need not to be empty...
-
-
-//  Prototypes  - all the objects created from constructor function will inherit prototype property... as all functions
-//  even constructor function has prototype property on them. 
-
-
-console.log(Person.prototype);
-Person.prototype.calcAge = function () {
-    console.log(2021 - this.birthYear);
-};
-
-// As calcAge will be avaliable to every object created through Person constructor function, through inheritance
-mridul.calcAge();
-achyut.calcAge();
-// We have access to calcAge function because of protytypal inheritance-- it's not present in object.
-console.log(mridul);
-
-// By utilising prototypal inheritance we only create one copy of calAge function for all the objects created from Person 
-// Constructor function.
-
-// Every object has prototype property 
-
-//  new keyword creates proto property on empty objects and sets it to prototype property of Person(constructor function) 
-console.log(mridul.__proto__);
-console.log(mridul.__proto__ === Person.prototype);
-
-console.log(Person.prototype.isPrototypeOf(mridul));
-console.log(Person.prototype.isPrototypeOf(achyut));
-console.log(Person.prototype.isPrototypeOf(Person));
-
-// We can set properties too not only functions
-
-Person.prototype.species = "Homo Sapiens"
-console.log(mridul);
-console.log(mridul.species);
-// Not it's own property--- just has prototypal inheritance from Person constructor function
-console.log(mridul.hasOwnProperty('firstname'));
-console.log(mridul.hasOwnProperty('species'));
-
-
-//mridul.protoype 
-console.log(mridul.__proto__);
-// Object.prototype (Top of prototype chain)
-console.log(mridul.__proto__.__proto__);
-// Null
-console.log(mridul.__proto__.__proto__.__proto__);
-
-// Will point back to Person itself (Person.prototype.constructor)
-// console.log(Person.prototype.constructor);
-console.dir(Person.prototype.constructor);
-
-//  prototype of array -->>
-const arr = [3, 4, 5, 3, 6, 9, 77, 2, 4, 6, 5, 77, 8];  // [] => shorthand for new Array same as {} shorthand for new Object
-console.log(arr.__proto__);
-console.log(arr.__proto__ === Array.prototype);
-console.log(arr.__proto__.__proto__);
-console.log(arr.__proto__.__proto__ === Object.prototype);
-console.log(arr.__proto__.__proto__.__proto__);
-
-//  Hence all the build in methods are just reused by prototypal inheritance..
-
-//  We can ourselves add methods that will work on all arrays that is created using Array /(or) [] constructor function
-Array.prototype.unique = function () {
-    return [...new Set(this)];
+Car.prototype.accelerate = function () {
+    this.speed = this.speed + 10;
+    console.log(this.speed);
 }
-// New property to array itself like any other default function as - map forEach filter etc (etcetra);
-console.log(arr.unique());
+
+Car.prototype.brake = function () {
+    this.speed = this.speed - 5;
+
+    console.log(this.speed);
+}
+
+car1.accelerate();
+car1.accelerate();
+car1.accelerate();
+car1.accelerate();
+car1.brake();
+car1.brake();
+
+car2.accelerate();
+car2.accelerate();
+car2.accelerate();
+car2.brake();
+
+
+
