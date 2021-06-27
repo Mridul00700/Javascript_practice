@@ -305,3 +305,12 @@ console.log(mridul);
 // By utilising prototypal inheritance we only create one copy of calAge function for all the objects created from Person 
 // Constructor function.
 
+// Every object has prototype property 
+
+console.log(mridul.__proto__);
+console.log(mridul.__proto__ === Person.prototype);
+
+console.log(Person.prototype.isPrototypeOf(mridul));
+console.log(Person.prototype.isPrototypeOf(achyut));
+console.log(Person.prototype.isPrototypeOf(Person));
+
