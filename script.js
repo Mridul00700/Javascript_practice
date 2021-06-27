@@ -222,36 +222,36 @@
 
 
 
-// Dom trversing -->>
+// // Dom trversing -->>
 
-const div = document.querySelector('.main-div');
+// const div = document.querySelector('.main-div');
 
-// Downwards ---> 
-console.log(div.querySelectorAll('.span'));
-console.log(div.childNodes);
-console.log(div.children);
+// // Downwards ---> 
+// console.log(div.querySelectorAll('.span'));
+// console.log(div.childNodes);
+// console.log(div.children);
 
-div.firstElementChild.style.color = "white";
-div.lastElementChild.style.color = "black";
+// div.firstElementChild.style.color = "white";
+// div.lastElementChild.style.color = "black";
 
-//  Upwards ---> Parents 
-console.log(div.parentElement);
-div.closest('.header').style.background = 'var(--gradient-secondary)';
+// //  Upwards ---> Parents 
+// console.log(div.parentElement);
+// div.closest('.header').style.background = 'var(--gradient-secondary)';
 
-// Sideways -- siblings  only direct --- left or right / previous or next
+// // Sideways -- siblings  only direct --- left or right / previous or next
 
-console.log(div.previousElementSibling);
-console.log(div.nextElementSibling);
+// console.log(div.previousElementSibling);
+// console.log(div.nextElementSibling);
 
-console.log(div.previousSibling);
-console.log(div.nextSibling);
+// console.log(div.previousSibling);
+// console.log(div.nextSibling);
 
 
-console.log(div.parentElement.children);
-[...div.parentElement.children].forEach(el => {
-    if (el !== div) {
-        el.style.transform = 'scale(0.5)'
-    }
-})
+// console.log(div.parentElement.children);
+// [...div.parentElement.children].forEach(el => {
+//     if (el !== div) {
+//         el.style.transform = 'scale(0.5)'
+//     }
+// })
 
-// Tab Component 
+// OOP -->>
