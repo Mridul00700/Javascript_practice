@@ -307,6 +307,7 @@ console.log(mridul);
 
 // Every object has prototype property 
 
+//  new keyword creates proto property on empty objects and sets it to prototype property of Person(constructor function) 
 console.log(mridul.__proto__);
 console.log(mridul.__proto__ === Person.prototype);
 
