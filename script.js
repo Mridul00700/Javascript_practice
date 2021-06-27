@@ -339,7 +339,7 @@ console.log(mridul.__proto__.__proto__.__proto__);
 console.dir(Person.prototype.constructor);
 
 //  prototype of array -->>
-const arr = [3, 4, 5, 3, 6, 9, 77, 2,];  // [] => shorthand for new Array same as {} shorthand for new Object
+const arr = [3, 4, 5, 3, 6, 9, 77, 2, 4, 6, 5, 77, 8];  // [] => shorthand for new Array same as {} shorthand for new Object
 console.log(arr.__proto__);
 console.log(arr.__proto__ === Array.prototype);
 console.log(arr.__proto__.__proto__);
@@ -347,3 +347,10 @@ console.log(arr.__proto__.__proto__ === Object.prototype);
 console.log(arr.__proto__.__proto__.__proto__);
 
 //  Hence all the build in methods are just reused by prototypal inheritance..
+
+//  We can ourselves add methods that will work on all arrays that is created using Array /(or) [] constructor function
+Array.prototype.unique = function () {
+    return [...new Set(this)];
+}
+// New property to array itself like any other default function as - map forEach filter etc (etcetra);
+console.log(arr.unique());
