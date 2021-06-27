@@ -262,6 +262,7 @@ const Person = function (firstname, birthYear) {
     // Instance properties
     this.firstname = firstname;
     this.birthYear = birthYear;
+    // return super;
     //     this.super();
 
     // Never do this --->> method inside constructor function...
@@ -272,6 +273,7 @@ const Person = function (firstname, birthYear) {
 
 const mridul = new Person('Mridul', 1995);
 console.log(mridul);
+
 
 
 const achyut = new Person('Achyut', 1994);
@@ -315,3 +317,19 @@ console.log(Person.prototype.isPrototypeOf(mridul));
 console.log(Person.prototype.isPrototypeOf(achyut));
 console.log(Person.prototype.isPrototypeOf(Person));
 
+// We can set properties too not only functions
+
+Person.prototype.species = "Homo Sapiens"
+console.log(mridul);
+console.log(mridul.species);
+// Not it's own property--- just has prototypal inheritance from Person constructor function
+console.log(mridul.hasOwnProperty('firstname'));
+console.log(mridul.hasOwnProperty('species'));
+
+
+//mridul.protoype 
+console.log(mridul.__proto__);
+// Object.prototype (Top of prototype chain)
+console.log(mridul.__proto__.__proto__);
+// Null
+console.log(mridul.__proto__.__proto__.__proto__);
