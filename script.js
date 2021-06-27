@@ -265,9 +265,9 @@ const Person = function (firstname, birthYear) {
     //     this.super();
 
     // Never do this --->> method inside constructor function...
-    this.calcAge = function () {
-        console.log(2021 - this.birthYear);
-    };
+    // this.calcAge = function () {
+    //     console.log(2021 - this.birthYear);
+    // };
 }
 
 const mridul = new Person('Mridul', 1995);
@@ -287,4 +287,21 @@ console.log(jay instanceof Person);
 // 4. function automatically returns empty {} which need not to be empty...
 
 
-//  Prototypes 
+//  Prototypes  - all the objects created from constructor function will inherit prototype property... as all functions
+//  even constructor function has prototype property on them. 
+
+
+console.log(Person.prototype);
+Person.prototype.calcAge = function () {
+    console.log(2021 - this.birthYear);
+};
+
+// As calcAge will be avaliable to every object created through Person constructor function, through inheritance
+mridul.calcAge();
+achyut.calcAge();
+// We have access to calcAge function because of protytypal inheritance-- it's not present in object.
+console.log(mridul);
+
+// By utilising prototypal inheritance we only create one copy of calAge function for all the objects created from Person 
+// Constructor function.
+
