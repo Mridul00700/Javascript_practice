@@ -255,3 +255,28 @@
 // })
 
 // OOP -->>
+// Constructor Function ---
+// Arrow function cannot work as constructor function as we need this keyword....
+
+const Person = function (firstname, birthYear) {
+
+    this.firstname = firstname;
+    this.birthYear = birthYear;
+    //     this.super();
+}
+
+const mridul = new Person('Mridul', 1995);
+console.log(mridul);
+
+
+const achyut = new Person('Achyut', 1994);
+console.log(achyut);
+const jay = {};
+
+console.log(mridul instanceof Person);
+console.log(jay instanceof Person);
+
+// 1. empty object is created  New {} is created
+// 2. function is called and this keyword is set to this newly created object..  this = {}
+// 3. new {} linked to prototype .. 
+// 4. function automatically returns empty {} which need not to be empty...
