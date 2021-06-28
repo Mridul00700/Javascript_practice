@@ -431,6 +431,10 @@ class PersonCl {
     greet() {
         console.log(`Hey ${this.firstName}`);
     }
+    // added as property 
+    get Age() {
+        return 2021 - this.birthYear;
+    }
 
 }
 
@@ -439,6 +443,7 @@ console.log(jay);
 jay.calcAge();
 console.log(jay.__proto__ === PersonCl.prototype);
 // PersonCl.prototype.greet =
+console.log(jay.Age);
 
 jay.greet();
 
@@ -449,3 +454,23 @@ jay.greet();
 // ////////////////////////////////////////////////////////////
 // Getters and Setters 
 
+const account = {
+    owner: 'Mridul',
+    movement: [22, 44, 67, 7887, 12],
+    // for getter we add get
+    get latest() {
+        return this.movement.slice(-1).pop();
+    },
+    // Exactly one patameter
+    set latest(a) {
+        this.movement.push(a);
+    }
+}
+
+console.log(account.latest);
+// Setter like any other properties
+account.latest = 50
+
+console.log(account);
+
+//  Getters and setters can be useful with data validation --->>>>
