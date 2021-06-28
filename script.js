@@ -371,39 +371,77 @@
 DATA CAR 1: 'BMW' going at 120 km/h
 DATA CAR 2: 'Mercedes' going at 95 km/h
 
-GOOD LUCK 😀
 */
 
-const Car = function (make, speed) {
-    this.make = make;
-    this.speed = speed;
+// const Car = function (make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+// }
+
+// const car1 = new Car("BMW", 120);
+// const car2 = new Car("Mercedes", 95);
+
+// Car.prototype.accelerate = function () {
+//     this.speed += + 10;
+//     console.log(this.speed);
+// }
+
+// Car.prototype.brake = function () {
+//     this.speed -= 5;
+//     console.log(this.speed);
+// }
+
+// car1.accelerate();
+// car1.accelerate();
+// car1.accelerate();
+// car1.accelerate();
+// car1.brake();
+// car1.brake();
+
+// car2.accelerate();
+// car2.accelerate();
+// car2.accelerate();
+// car2.brake();
+
+
+//  Classes --->>>
+
+// Class Expression -> 
+// Class is special type of function
+// const PersonCl = class {
+
+// }
+
+
+// Class Declaration ->
+
+class PersonCl {
+    // pass in arguments (as properties) that you want the obejct to have
+    // Whenever we will use new keyword this constructor is called..
+    constructor(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear
+    }
+
+    // added to prototype property of the person class
+    calcAge() {
+        console.log(2021 - this.birthYear);
+    }
+
+    greet() {
+        console.log(`Hey ${this.firstName}`);
+    }
+
 }
 
-const car1 = new Car("BMW", 120);
-const car2 = new Car("Mercedes", 95);
+const jay = new PersonCl('Jay', 1999);
+console.log(jay);
+jay.calcAge();
+console.log(jay.__proto__ === PersonCl.prototype);
+// PersonCl.prototype.greet =
 
-Car.prototype.accelerate = function () {
-    this.speed = this.speed + 10;
-    console.log(this.speed);
-}
+jay.greet();
 
-Car.prototype.brake = function () {
-    this.speed = this.speed - 5;
-
-    console.log(this.speed);
-}
-
-car1.accelerate();
-car1.accelerate();
-car1.accelerate();
-car1.accelerate();
-car1.brake();
-car1.brake();
-
-car2.accelerate();
-car2.accelerate();
-car2.accelerate();
-car2.brake();
-
-
-
+// Classes are not hoisted .... function declaration are hoisted hence can be used before than they are declared
+// Classes are also first class citizens Pass them in function and get a return class from function
+// Body of a class in always executed in strict mode 
