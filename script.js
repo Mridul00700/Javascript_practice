@@ -521,4 +521,21 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 
 
 // Object.create ---->>> 
+// person prototype ------
+const PersonProto = {
+    calcAge() {
+        console.log(2021 - this.birthYear);
+    }
+};
+
+// Creating the object person with prototype of Personproto
+// prototypal inheritance ----->>>>     least used way to create prototypal inheritances
+const rake = Object.create(PersonProto);
+console.log(rake);
+
+rake.name = 'Rake'
+rake.birthYear = 2010;
+rake.calcAge();
+
+console.log(rake.__proto__);
 
