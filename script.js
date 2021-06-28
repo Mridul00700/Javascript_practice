@@ -423,63 +423,63 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 // }
 
 
-// Class Declaration ->
+// // Class Declaration ->
 
-class PersonCl {
-    // pass in arguments (as properties) that you want the obejct to have
-    // Whenever we will use new keyword this constructor is called..
-    constructor(fullName, birthYear) {
-        this.fullName = fullName;
-        this.birthYear = birthYear
-    }
+// class PersonCl {
+//     // pass in arguments (as properties) that you want the obejct to have
+//     // Whenever we will use new keyword this constructor is called..
+//     constructor(fullName, birthYear) {
+//         this.fullName = fullName;
+//         this.birthYear = birthYear
+//     }
 
-    // added to prototype property of the person class
-    // instance methods
-    calcAge() {
-        console.log(2021 - this.birthYear);
-    }
+//     // added to prototype property of the person class
+//     // instance methods
+//     calcAge() {
+//         console.log(2021 - this.birthYear);
+//     }
 
-    greet() {
-        console.log(`Hey ${this.firstName}`);
-    }
-    // added as property 
-    get Age() {
-        return 2021 - this.birthYear;
-    }
+//     greet() {
+//         console.log(`Hey ${this.firstName}`);
+//     }
+//     // added as property 
+//     get Age() {
+//         return 2021 - this.birthYear;
+//     }
 
-    set fullName(name) {
-        if (name.includes(' '))
-            this._fullName = name
-        else
-            alert(`${name} is not a full name`)
-    }
+//     set fullName(name) {
+//         if (name.includes(' '))
+//             this._fullName = name
+//         else
+//             alert(`${name} is not a full name`)
+//     }
 
-    get fullName() {
-        return this._fullName;
-    }
-    // static not inherited
-    static hey() {
-        console.log('Hey there!!!!');
-        console.log(this);
-    }
+//     get fullName() {
+//         return this._fullName;
+//     }
+//     // static not inherited
+//     static hey() {
+//         console.log('Hey there!!!!');
+//         console.log(this);
+//     }
 
-}
+// }
 
-const jay = new PersonCl('Jay Marvel', 1999);
-console.log(jay);
-jay.calcAge();
-console.log(jay.__proto__ === PersonCl.prototype);
-// PersonCl.prototype.greet =
-console.log(jay.Age);
-console.log(jay.fullName);
+// const jay = new PersonCl('Jay Marvel', 1999);
+// console.log(jay);
+// jay.calcAge();
+// console.log(jay.__proto__ === PersonCl.prototype);
+// // PersonCl.prototype.greet =
+// console.log(jay.Age);
+// console.log(jay.fullName);
 
-jay.greet();
-Person.hey();
-// jay.hey();
+// jay.greet();
+// Person.hey();
+// // jay.hey();
 
-const walter = new PersonCl('Walter Peirce', 1976);
-console.log(walter);
-console.log(walter.fullName);
+// const walter = new PersonCl('Walter Peirce', 1976);
+// console.log(walter);
+// console.log(walter.fullName);
 
 
 // Static methods -->>
@@ -519,4 +519,6 @@ console.log(walter.fullName);
 //  Getters and setters can be useful with data validation --->>>>
 
 
+
+// Object.create ---->>> 
 
