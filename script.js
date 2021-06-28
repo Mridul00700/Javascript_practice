@@ -258,22 +258,32 @@
 // Constructor Function ---
 // Arrow function cannot work as constructor function as we need this keyword....
 
-// const Person = function (firstname, birthYear) {
-//     // Instance properties
-//     this.firstname = firstname;
-//     this.birthYear = birthYear;
-//     // return super;
-//     //     this.super();
+const Person = function (firstname, birthYear) {
+    // Instance properties
+    this.firstname = firstname;
+    this.birthYear = birthYear;
+    // return super;
+    //     this.super();
 
-//     // Never do this --->> method inside constructor function...
-//     // this.calcAge = function () {
-//     //     console.log(2021 - this.birthYear);
-//     // };
-// }
+    // Never do this --->> method inside constructor function...
+    // Instance Methods
+    // this.calcAge = function () {
+    //     console.log(2021 - this.birthYear);
+    // };
+}
 
-// const mridul = new Person('Mridul', 1995);
-// console.log(mridul);
+const mridul = new Person('Mridul', 1995);
+console.log(mridul);
 
+
+// Static Methods
+Person.hey = function () {
+    console.log('Hey!!!!!!!!');
+    console.log(this);
+}
+
+Person.hey();
+// mridul.hey() Error as its not in the prototype of all the objects
 
 
 // const achyut = new Person('Achyut', 1994);
@@ -424,6 +434,7 @@ class PersonCl {
     }
 
     // added to prototype property of the person class
+    // instance methods
     calcAge() {
         console.log(2021 - this.birthYear);
     }
@@ -446,6 +457,12 @@ class PersonCl {
     get fullName() {
         return this._fullName;
     }
+    // static not inherited
+    static hey() {
+        console.log('Hey there!!!!');
+        console.log(this);
+    }
+
 }
 
 const jay = new PersonCl('Jay Marvel', 1999);
@@ -457,11 +474,19 @@ console.log(jay.Age);
 console.log(jay.fullName);
 
 jay.greet();
-
+Person.hey();
+// jay.hey();
 
 const walter = new PersonCl('Walter Peirce', 1976);
 console.log(walter);
 console.log(walter.fullName);
+
+
+// Static methods -->>
+// Array.from is attached to constructors not in prototype   Number.parseFloat(12); not avaliable on number
+
+
+
 
 
 
@@ -492,3 +517,6 @@ console.log(walter.fullName);
 // console.log(account);
 
 //  Getters and setters can be useful with data validation --->>>>
+
+
+
