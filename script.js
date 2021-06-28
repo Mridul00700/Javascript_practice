@@ -418,8 +418,8 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 class PersonCl {
     // pass in arguments (as properties) that you want the obejct to have
     // Whenever we will use new keyword this constructor is called..
-    constructor(firstName, birthYear) {
-        this.firstName = firstName;
+    constructor(fullName, birthYear) {
+        this.fullName = fullName;
         this.birthYear = birthYear
     }
 
@@ -436,16 +436,34 @@ class PersonCl {
         return 2021 - this.birthYear;
     }
 
+    set fullName(name) {
+        if (name.includes(' '))
+            this._fullName = name
+        else
+            alert(`${name} is not a full name`)
+    }
+
+    get fullName() {
+        return this._fullName;
+    }
 }
 
-const jay = new PersonCl('Jay', 1999);
+const jay = new PersonCl('Jay Marvel', 1999);
 console.log(jay);
 jay.calcAge();
 console.log(jay.__proto__ === PersonCl.prototype);
 // PersonCl.prototype.greet =
 console.log(jay.Age);
+console.log(jay.fullName);
 
 jay.greet();
+
+
+const walter = new PersonCl('Walter Peirce', 1976);
+console.log(walter);
+console.log(walter.fullName);
+
+
 
 // Classes are not hoisted .... function declaration are hoisted hence can be used before than they are declared
 // Classes are also first class citizens Pass them in function and get a return class from function
@@ -454,23 +472,23 @@ jay.greet();
 // ////////////////////////////////////////////////////////////
 // Getters and Setters 
 
-const account = {
-    owner: 'Mridul',
-    movement: [22, 44, 67, 7887, 12],
-    // for getter we add get
-    get latest() {
-        return this.movement.slice(-1).pop();
-    },
-    // Exactly one patameter
-    set latest(a) {
-        this.movement.push(a);
-    }
-}
+// const account = {
+//     owner: 'Mridul',
+//     movement: [22, 44, 67, 7887, 12],
+//     // for getter we add get
+//     get latest() {
+//         return this.movement.slice(-1).pop();
+//     },
+//     // Exactly one patameter
+//     set latest(a) {
+//         this.movement.push(a);
+//     }
+// }
 
-console.log(account.latest);
-// Setter like any other properties
-account.latest = 50
+// console.log(account.latest);
+// // Setter like any other properties
+// account.latest = 50
 
-console.log(account);
+// console.log(account);
 
 //  Getters and setters can be useful with data validation --->>>>
