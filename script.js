@@ -445,3 +445,7 @@ jay.greet();
 // Classes are not hoisted .... function declaration are hoisted hence can be used before than they are declared
 // Classes are also first class citizens Pass them in function and get a return class from function
 // Body of a class in always executed in strict mode 
+
+// ////////////////////////////////////////////////////////////
+// Getters and Setters 
+
