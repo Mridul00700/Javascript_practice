@@ -738,3 +738,32 @@ class PersonCl {
     }
 
 }
+
+class StudentCl extends PersonCl {
+
+
+    // If we add only two argumnets while creating object then we don't need constructor at all.. the two arugments 
+    // They are present in parent constructor. If we don't need new properties then no need for constructor...
+
+    constructor(fullName, birthYear, course) {
+        // PersonCl.call  We dont need to manualy do this here in class representation
+        super(fullName, birthYear);  // To copy all the constructor arguments automatically.  This Always need to happen first
+        // As this won't be avaliable if we don't use super. 
+        this.course = course;
+    }
+
+    introduce() {
+        console.log("Mike----", this.fullName, " ", this.birthYear, " ", this.course);
+    }
+    //  this apprears first in prototype chain hence the parent function overwritten
+    calcAge() {
+        console.log(`i am ${2022 - this.birthYear}`);
+    }
+
+}
+
+// const mike = new StudentCl('Mike Wazowaski', 1980);
+const mike = new StudentCl('Mike Wazowaski', 1980, 'CS')
+
+mike.introduce();
+mike.calcAge();
