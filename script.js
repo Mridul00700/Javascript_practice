@@ -609,44 +609,132 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 // console.log(Ford);
 
 
-const Person = function (firstname, birthYear) {
-    // Instance properties
-    this.firstname = firstname;
-    this.birthYear = birthYear;
+// const Person = function (firstname, birthYear) {
+//     // Instance properties
+//     this.firstname = firstname;
+//     this.birthYear = birthYear;
+// }
+
+
+// Person.prototype.calcAge = function () {
+//     console.log(2021 - this.birthYear);
+// };
+
+// const Student = function (firstName, birthYear, course) {
+//     Person.call(this, firstName, birthYear)
+//     this.course = course;
+// }
+
+
+// // Object.create returns empty object ...
+// Student.prototype = Object.create(Person.prototype);
+
+
+// Student.prototype.introduce = function () {
+//     console.log(`My name is ${this.firstName} and I study ${this.course}`);
+// };
+
+// const mike = new Student('Mike', 2015, 'Computer')
+// console.log(mike);
+
+// mike.introduce();
+// mike.calcAge();
+
+// console.log(mike.__proto__);
+
+// console.log(mike.__proto__.__proto__);
+
+// console.log(mike instanceof Student);
+// console.log(mike instanceof Person);
+// console.log(mike instanceof Object);
+// Student.prototype.constructor = Student
+// console.dir(Student.prototype.constructor);
+
+
+// const Car = function (make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+// }
+
+// Car.prototype.accelerate = function () {
+//     this.speed += 10;
+//     console.log(this.speed, "From Car");
+// }
+
+// Car.prototype.brake = function () {
+//     this.speed -= 5;
+//     console.log(this.speed);
+// }
+
+// const ElectricCar = function (make, speed, charge) {
+//     Car.call(this, make, speed);
+//     this.charge = charge;
+// }
+
+// ElectricCar.prototype = Object.create(Car.prototype);
+
+// ElectricCar.prototype.chargeBattery = function (chargeTo) {
+//     this.charge = chargeTo;
+// };
+
+// ElectricCar.prototype.accelerate = function () {
+//     this.speed += 20;
+//     this.charge -= 1;
+//     console.log(`Tesla is going at ${this.speed}, with a charge of ${this.charge}`);
+// };
+
+
+// const ElectricV = new ElectricCar('Tesla', 123, 23);
+
+// ElectricV.accelerate();
+// ElectricV.accelerate();
+// ElectricV.brake();
+// ElectricV.accelerate();
+// ElectricV.accelerate();
+// ElectricV.brake();
+// ElectricV.chargeBattery(90)
+// ElectricV.accelerate();
+// ElectricV.accelerate();
+
+
+
+
+class PersonCl {
+    // pass in arguments (as properties) that you want the obejct to have
+    // Whenever we will use new keyword this constructor is called..
+    constructor(fullName, birthYear) {
+        this.fullName = fullName;
+        this.birthYear = birthYear
+    }
+
+    // added to prototype property of the person class
+    // instance methods
+    calcAge() {
+        console.log(2021 - this.birthYear);
+    }
+
+    greet() {
+        console.log(`Hey ${this.firstName}`);
+    }
+    // added as property 
+    get Age() {
+        return 2021 - this.birthYear;
+    }
+
+    set fullName(name) {
+        if (name.includes(' '))
+            this._fullName = name
+        else
+            alert(`${name} is not a full name`)
+    }
+
+    get fullName() {
+        return this._fullName;
+    }
+    // static not inherited
+    static hey() {
+        console.log('Hey there!!!!');
+        console.log(this);
+    }
+
 }
-
-
-Person.prototype.calcAge = function () {
-    console.log(2021 - this.birthYear);
-};
-
-const Student = function (firstName, birthYear, course) {
-    Person.call(this, firstName, birthYear)
-    this.course = course;
-}
-
-
-// Object.create returns empty object ...
-Student.prototype = Object.create(Person.prototype);
-
-
-Student.prototype.introduce = function () {
-    console.log(`My name is ${this.firstName} and I study ${this.course}`);
-};
-
-const mike = new Student('Mike', 2015, 'Computer')
-console.log(mike);
-
-mike.introduce();
-mike.calcAge();
-
-console.log(mike.__proto__);
-
-console.log(mike.__proto__.__proto__);
-
-console.log(mike instanceof Student);
-console.log(mike instanceof Person);
-console.log(mike instanceof Object);
-Student.prototype.constructor = Student
-console.dir(Student.prototype.constructor);
-
