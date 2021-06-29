@@ -621,10 +621,12 @@ Person.prototype.calcAge = function () {
 };
 
 const Student = function (firstName, birthYear, course) {
-    Person.call(firstName, birthYear)
+    Person.call(this, firstName, birthYear)
     this.course = course;
 }
 
+
+// Object.create returns empty object ...
 Student.prototype = Object.create(Person.prototype);
 
 
@@ -636,3 +638,15 @@ const mike = new Student('Mike', 2015, 'Computer')
 console.log(mike);
 
 mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
+
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
+Student.prototype.constructor = Student
+console.dir(Student.prototype.constructor);
+
