@@ -522,7 +522,7 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 
 // // Object.create ---->>> 
 // // person prototype ------
-// const PersonProto = {
+//  const PersonProto = {
 //     calcAge() {
 //         console.log(2021 - this.birthYear);
 //     },
@@ -698,72 +698,39 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 
 
 
+// Object.create ---- inheritance..
 
-class PersonCl {
-    // pass in arguments (as properties) that you want the obejct to have
-    // Whenever we will use new keyword this constructor is called..
-    constructor(fullName, birthYear) {
-        this.fullName = fullName;
-        this.birthYear = birthYear
-    }
-
-    // added to prototype property of the person class
-    // instance methods
+const PersonProto = {
     calcAge() {
         console.log(2021 - this.birthYear);
-    }
-
-    greet() {
-        console.log(`Hey ${this.firstName}`);
-    }
-    // added as property 
-    get Age() {
-        return 2021 - this.birthYear;
-    }
-
-    set fullName(name) {
-        if (name.includes(' '))
-            this._fullName = name
-        else
-            alert(`${name} is not a full name`)
-    }
-
-    get fullName() {
-        return this._fullName;
-    }
-    // static not inherited
-    static hey() {
-        console.log('Hey there!!!!');
-        console.log(this);
-    }
-
-}
-
-class StudentCl extends PersonCl {
-
-
-    // If we add only two argumnets while creating object then we don't need constructor at all.. the two arugments 
-    // They are present in parent constructor. If we don't need new properties then no need for constructor...
-
-    constructor(fullName, birthYear, course) {
-        // PersonCl.call  We dont need to manualy do this here in class representation
-        super(fullName, birthYear);  // To copy all the constructor arguments automatically.  This Always need to happen first
-        // As this won't be avaliable if we don't use super. 
-        this.course = course;
-    }
-
+    },
+    init(name, birthYear) {
+        this.name = name;
+        this.birthYear = birthYear;
+    },
     introduce() {
-        console.log("Mike----", this.fullName, " ", this.birthYear, " ", this.course);
+        console.log("sdsdsd");
     }
-    //  this apprears first in prototype chain hence the parent function overwritten
-    calcAge() {
-        console.log(`i am ${2022 - this.birthYear}`);
-    }
+};
 
+const mike = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+    PersonProto.init.call(this, firstName, birthYear)
+    this.course = course;
 }
 
-// const mike = new StudentCl('Mike Wazowaski', 1980);
-const mike = new StudentCl('Mike Wazowaski', 1980, 'CS')
 
-mike.introduce();
-mike.calcAge();
+const jay = Object.create(StudentProto);
+
+jay.init('jay', 2008, 'cs');
+
+// Overrite!!!
+StudentProto.introduce = function () {
+    console.log("hi there!!!");
+}
+jay.introduce();
+
+jay.calcAge();
+
