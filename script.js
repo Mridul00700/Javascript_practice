@@ -258,31 +258,31 @@
 // Constructor Function ---
 // Arrow function cannot work as constructor function as we need this keyword....
 
-const Person = function (firstname, birthYear) {
-    // Instance properties
-    this.firstname = firstname;
-    this.birthYear = birthYear;
-    // return super;
-    //     this.super();
+// const Person = function (firstname, birthYear) {
+//     // Instance properties
+//     this.firstname = firstname;
+//     this.birthYear = birthYear;
+//     // return super;
+//     //     this.super();
 
-    // Never do this --->> method inside constructor function...
-    // Instance Methods
-    // this.calcAge = function () {
-    //     console.log(2021 - this.birthYear);
-    // };
-}
+//     // Never do this --->> method inside constructor function...
+//     // Instance Methods
+//     // this.calcAge = function () {
+//     //     console.log(2021 - this.birthYear);
+//     // };
+// }
 
-const mridul = new Person('Mridul', 1995);
-console.log(mridul);
+// const mridul = new Person('Mridul', 1995);
+// console.log(mridul);
 
 
-// Static Methods
-Person.hey = function () {
-    console.log('Hey!!!!!!!!');
-    console.log(this);
-}
+// // Static Methods
+// Person.hey = function () {
+//     console.log('Hey!!!!!!!!');
+//     console.log(this);
+// }
 
-Person.hey();
+// Person.hey();
 // mridul.hey() Error as its not in the prototype of all the objects
 
 
@@ -608,3 +608,31 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 // Ford.speedUS = 150
 // console.log(Ford);
 
+
+const Person = function (firstname, birthYear) {
+    // Instance properties
+    this.firstname = firstname;
+    this.birthYear = birthYear;
+}
+
+
+Person.prototype.calcAge = function () {
+    console.log(2021 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+    Person.call(firstName, birthYear)
+    this.course = course;
+}
+
+Student.prototype = Object.create(Person.prototype);
+
+
+Student.prototype.introduce = function () {
+    console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student('Mike', 2015, 'Computer')
+console.log(mike);
+
+mike.introduce();
