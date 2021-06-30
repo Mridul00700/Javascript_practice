@@ -735,27 +735,54 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 // jay.calcAge();
 
 // Class Example --
+// Data privacy and Encapsulation ---->>>
+
+
+// Class fields ---- >>>>
+
+
+// Public fields
+// Private fields
+// Public methods
+// Private methods
+//  There are also static versions
 
 class Account {
+
+    // Public fields --->>> 
+    // no need for const or let 
+    // These fields will be added on instances  while methods added in class will be on prototype
+    locale = navigator.language;
+
+    // Private fields -->>
+    #movements = [];
+    #pin;
+
+
     constructor(owner, currency, pin) {
         this.owner = owner;
         this.currency = currency;
-        this._pin = pin;
+        this.#pin = pin;
         // Protected property not truly private.... developers agree to do this to protect data...
-        this._movements = [];
-        this.locale = navigator.language;
+        // this._movements = [];
+        // this.locale = navigator.language;
 
         console.log(`thanks for opening account ${owner}`);
     }
     // Public Interface of our objects
-
+    // Public Methods
     getMovments() {
-        return this._movements;
+        return this.#movements;
     }
 
     // Internal methods
     deposit(val) {
-        this._movements.push(val);
+        this.#movements.push(val);
+    }
+
+    // Static are just helper function not avaliable on the instances but on class itself
+    static helper() {
+        console.log("Help!!");
     }
 
     withdrawl(val) {
@@ -764,15 +791,19 @@ class Account {
     }
 
     // Internal method
-    _approveLoan(loan) {
-        return true;
-    }
     requestLoan(val) {
-        if (this._approveLoan(val)) {
+        if (this.#approveLoan(val)) {
             this.deposit(val);
             console.log("loan approved!!");
         }
     }
+
+    // Private methods ---
+    // not avaliable as it declares as prop instead of putting in prototype
+    #approveLoan(loan) {
+        return true;
+    }
+
 }
 
 const acc1 = new Account('Mike', 'INR', 2345);
@@ -783,7 +814,9 @@ console.log(acc1);
 acc1.requestLoan(400);
 
 console.log(acc1.getMovments());
+// We cannot access movements private field here as intended
+// console.log(acc1.#movements);
 
 // acc1.movements.push(223);
-
-// Data privacy and Encapsulation ---->>>
+// console.log(acc1.#pin);
+// console.log(acc1.#approveLoan(22));
