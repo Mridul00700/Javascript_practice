@@ -700,37 +700,81 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 
 // Object.create ---- inheritance..
 
-const PersonProto = {
-    calcAge() {
-        console.log(2021 - this.birthYear);
-    },
-    init(name, birthYear) {
-        this.name = name;
-        this.birthYear = birthYear;
-    },
-    introduce() {
-        console.log("sdsdsd");
+// const PersonProto = {
+//     calcAge() {
+//         console.log(2021 - this.birthYear);
+//     },
+//     init(name, birthYear) {
+//         this.name = name;
+//         this.birthYear = birthYear;
+//     },
+//     introduce() {
+//         console.log("sdsdsd");
+//     }
+// };
+
+// const mike = Object.create(PersonProto);
+
+// const StudentProto = Object.create(PersonProto);
+// StudentProto.init = function (firstName, birthYear, course) {
+//     PersonProto.init.call(this, firstName, birthYear)
+//     this.course = course;
+// }
+
+
+// const jay = Object.create(StudentProto);
+
+// jay.init('jay', 2008, 'cs');
+
+// // Overrite!!!
+// StudentProto.introduce = function () {
+//     console.log("hi there!!!");
+// }
+// jay.introduce();
+
+// jay.calcAge();
+
+// Class Example --
+
+class Account {
+    constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+        this.pin = pin;
+        this.movements = [];
+        this.locale = navigator.language;
+
+        console.log(`thanks for opening account ${owner}`);
     }
-};
+    // Public Interface of our objects
 
-const mike = Object.create(PersonProto);
+    // Internal methods
+    deposit(val) {
+        this.movements.push(val);
+    }
 
-const StudentProto = Object.create(PersonProto);
-StudentProto.init = function (firstName, birthYear, course) {
-    PersonProto.init.call(this, firstName, birthYear)
-    this.course = course;
+    withdrawl(val) {
+        // We can call other function too ...
+        this.deposit(-val);
+    }
+
+    // Internal method
+    approveLoan(loan) {
+        return true;
+    }
+    requestLoan(val) {
+        if (this.approveLoan(val)) {
+            this.deposit(val);
+            console.log("loan approved!!");
+        }
+    }
 }
 
+const acc1 = new Account('Mike', 'INR', 2345);
+acc1.deposit(250);
+acc1.withdrawl(140);
+console.log(acc1);
 
-const jay = Object.create(StudentProto);
+acc1.requestLoan(400);
 
-jay.init('jay', 2008, 'cs');
-
-// Overrite!!!
-StudentProto.introduce = function () {
-    console.log("hi there!!!");
-}
-jay.introduce();
-
-jay.calcAge();
-
+// acc1.movements.push(223);
