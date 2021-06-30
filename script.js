@@ -778,6 +778,7 @@ class Account {
     // Internal methods
     deposit(val) {
         this.#movements.push(val);
+        return this
     }
 
     // Static are just helper function not avaliable on the instances but on class itself
@@ -788,6 +789,7 @@ class Account {
     withdrawl(val) {
         // We can call other function too ...
         this.deposit(-val);
+        return this
     }
 
     // Internal method
@@ -795,6 +797,7 @@ class Account {
         if (this.#approveLoan(val)) {
             this.deposit(val);
             console.log("loan approved!!");
+            return this
         }
     }
 
@@ -813,10 +816,15 @@ console.log(acc1);
 
 acc1.requestLoan(400);
 
-console.log(acc1.getMovments());
 // We cannot access movements private field here as intended
 // console.log(acc1.#movements);
 
 // acc1.movements.push(223);
 // console.log(acc1.#pin);
 // console.log(acc1.#approveLoan(22));
+
+console.log(acc1.getMovments());
+
+// Chaining --- >
+acc1.deposit(33).deposit(343).withdrawl(222).requestLoan(1222).withdrawl(2221);
+console.log(acc1.getMovments());
