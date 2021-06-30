@@ -747,84 +747,147 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 // Private methods
 //  There are also static versions
 
-class Account {
+// class Account {
 
-    // Public fields --->>> 
-    // no need for const or let 
-    // These fields will be added on instances  while methods added in class will be on prototype
-    locale = navigator.language;
+//     // Public fields --->>> 
+//     // no need for const or let 
+//     // These fields will be added on instances  while methods added in class will be on prototype
+//     locale = navigator.language;
 
-    // Private fields -->>
-    #movements = [];
-    #pin;
+//     // Private fields -->>
+//     #movements = [];
+//     #pin;
 
 
-    constructor(owner, currency, pin) {
-        this.owner = owner;
-        this.currency = currency;
-        this.#pin = pin;
-        // Protected property not truly private.... developers agree to do this to protect data...
-        // this._movements = [];
-        // this.locale = navigator.language;
+//     constructor(owner, currency, pin) {
+//         this.owner = owner;
+//         this.currency = currency;
+//         this.#pin = pin;
+//         // Protected property not truly private.... developers agree to do this to protect data...
+//         // this._movements = [];
+//         // this.locale = navigator.language;
 
-        console.log(`thanks for opening account ${owner}`);
-    }
-    // Public Interface of our objects
-    // Public Methods
-    getMovments() {
-        return this.#movements;
-    }
+//         console.log(`thanks for opening account ${owner}`);
+//     }
+//     // Public Interface of our objects
+//     // Public Methods
+//     getMovments() {
+//         return this.#movements;
+//     }
 
-    // Internal methods
-    deposit(val) {
-        this.#movements.push(val);
-        return this
-    }
+//     // Internal methods
+//     deposit(val) {
+//         this.#movements.push(val);
+//         return this
+//     }
 
-    // Static are just helper function not avaliable on the instances but on class itself
-    static helper() {
-        console.log("Help!!");
-    }
+//     // Static are just helper function not avaliable on the instances but on class itself
+//     static helper() {
+//         console.log("Help!!");
+//     }
 
-    withdrawl(val) {
-        // We can call other function too ...
-        this.deposit(-val);
-        return this
-    }
+//     withdrawl(val) {
+//         // We can call other function too ...
+//         this.deposit(-val);
+//         return this
+//     }
 
-    // Internal method
-    requestLoan(val) {
-        if (this.#approveLoan(val)) {
-            this.deposit(val);
-            console.log("loan approved!!");
-            return this
-        }
-    }
+//     // Internal method
+//     requestLoan(val) {
+//         if (this.#approveLoan(val)) {
+//             this.deposit(val);
+//             console.log("loan approved!!");
+//             return this
+//         }
+//     }
 
-    // Private methods ---
-    // not avaliable as it declares as prop instead of putting in prototype
-    #approveLoan(loan) {
-        return true;
-    }
+//     // Private methods ---
+//     // not avaliable as it declares as prop instead of putting in prototype
+//     #approveLoan(loan) {
+//         return true;
+//     }
 
-}
+// }
 
-const acc1 = new Account('Mike', 'INR', 2345);
-acc1.deposit(250);
-acc1.withdrawl(140);
-console.log(acc1);
+// const acc1 = new Account('Mike', 'INR', 2345);
+// acc1.deposit(250);
+// acc1.withdrawl(140);
+// console.log(acc1);
 
-acc1.requestLoan(400);
+// acc1.requestLoan(400);
 
 // We cannot access movements private field here as intended
 // console.log(acc1.#movements);
 
 // acc1.movements.push(223);
 // console.log(acc1.#pin);
-// console.log(acc1.#approveLoan(22));
+// // console.log(acc1.#approveLoan(22));
 
-console.log(acc1.getMovments());
+// console.log(acc1.getMovments());
 
-// Chaining --- >
-acc1.deposit(33).deposit(343).withdrawl(222).requestLoan(1222).withdrawl(2221);
-console.log(acc1.getMovments());
+// // Chaining --- >
+// acc1.deposit(33).deposit(343).withdrawl(222).requestLoan(1222).withdrawl(2221);
+// console.log(acc1.getMovments());
+
+
+
+
+// class CarCl {
+
+
+//     constructor(make, speed) {
+//         this.make = make;
+//         this.speed = speed;
+//     }
+
+//     accelerate() {
+//         this.speed += 10;
+//         console.log("km/hr", this.speed);
+//     }
+
+//     brake() {
+//         this.speed -= 5;
+//         console.log("km/hr", this.speed);
+//         return this
+//     }
+
+//     get speedUS() {
+//         // console.log(this._speed);
+//         return (this.speed / 1.6)
+
+//     }
+//     set speedUS(speed) {
+//         this.speed = speed * 1.6;
+//     }
+// }
+
+// class EVCl extends CarCl {
+
+
+//     #charge;
+//     constructor(make, speed, charge) {
+//         super(make, speed);
+//         this.#charge = charge;
+//     }
+
+//     chargeBattery(chargeTo) {
+//         this.#charge = chargeTo;
+//         return this
+//     }
+
+//     accelerate() {
+//         this.speed += 20;
+//         this.#charge -= 1;
+//         console.log(`Tesla is going at ${this.speed}, with a charge of ${this.#charge}`);
+//         return this
+//     }
+// }
+
+
+// const rivian = new EVCl('Rivian', 120, 23);
+// // console.log(rivian.#charge);
+
+// rivian.accelerate().accelerate().accelerate().brake().chargeBattery(50).accelerate()
+
+
+// console.log(rivian.speedUS);
