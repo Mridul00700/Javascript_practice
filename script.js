@@ -740,17 +740,22 @@ class Account {
     constructor(owner, currency, pin) {
         this.owner = owner;
         this.currency = currency;
-        this.pin = pin;
-        this.movements = [];
+        this._pin = pin;
+        // Protected property not truly private.... developers agree to do this to protect data...
+        this._movements = [];
         this.locale = navigator.language;
 
         console.log(`thanks for opening account ${owner}`);
     }
     // Public Interface of our objects
 
+    getMovments() {
+        return this._movements;
+    }
+
     // Internal methods
     deposit(val) {
-        this.movements.push(val);
+        this._movements.push(val);
     }
 
     withdrawl(val) {
@@ -759,11 +764,11 @@ class Account {
     }
 
     // Internal method
-    approveLoan(loan) {
+    _approveLoan(loan) {
         return true;
     }
     requestLoan(val) {
-        if (this.approveLoan(val)) {
+        if (this._approveLoan(val)) {
             this.deposit(val);
             console.log("loan approved!!");
         }
@@ -777,4 +782,8 @@ console.log(acc1);
 
 acc1.requestLoan(400);
 
+console.log(acc1.getMovments());
+
 // acc1.movements.push(223);
+
+// Data privacy and Encapsulation ---->>>
