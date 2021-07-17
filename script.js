@@ -915,19 +915,30 @@ TEST COORDINATES 1: 52.508, 13.381 (Latitude, Longitude)
 TEST COORDINATES 2: 19.037, 72.873
 TEST COORDINATES 2: -33.933, 18.474
 
-GOOD LUCK 😀
-*/
+// GOOD LUCK 😀
+// */
 
-const whereAmI = (lat, lng) => {
-    fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`).then(res => {
-        if (!res.ok) {
-            throw new Error(`Please try after sometime as you have exceeded the rate limit of geocoading ${res.status}`);
-        }
-        return res.json()
-    })
-        .then(data => {
-            console.log(data, `You are in ${data.city}, ${data.country}`);
-        }).catch(err => console.log(err));
-}
+// const whereAmI = (lat, lng) => {
+//     fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`).then(res => {
+//         if (!res.ok) {
+//             throw new Error(`Please try after sometime as you have exceeded the rate limit of geocoading ${res.status}`);
+//         }
+//         return res.json()
+//     })
+//         .then(data => {
+//             console.log(data, `You are in ${data.city}, ${data.country}`);
+//         }).catch(err => console.log(err));
+// }
 
-whereAmI(52.508, 13.381);
+// whereAmI(52.508, 13.381);
+
+// Understanding callback queue and event loop
+
+console.log("Test start");
+// This goes into callback queue 
+setTimeout(() => console.log("0 sec timer"), 0);
+// Building a promise -->>
+// This goes into microtask queue Hence executed 1st 
+Promise.resolve('Resolved promise').then(res => console.log(res));
+
+console.log("Test End");
