@@ -952,29 +952,60 @@ TEST COORDINATES 2: -33.933, 18.474
 
 // Promise constructor --->>>
 // Executor function    
-const lotteryPromise = new Promise(function (resolve, reject) {
+// const lotteryPromise = new Promise(function (resolve, reject) {
 
-    console.log("Lottery draw is happening");
-    setTimeout(() => {
-        if (Math.random() >= 0.5) {
-            resolve("You Win!");
-        }
-        else reject(new Error('You Loose!'));
+//     console.log("Lottery draw is happening");
+//     setTimeout(() => {
+//         if (Math.random() >= 0.5) {
+//             resolve("You Win!");
+//         }
+//         else reject(new Error('You Loose!'));
 
-    }, 500);
+//     }, 500);
 
-});
+// });
 
-lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+// lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
-// Promisifying setTimeout
-const wait = function (seconds) {
-    return new Promise(function (resolve) {
-        setTimeout(resolve, seconds * 1000);
+// // Promisifying setTimeout
+// const wait = function (seconds) {
+//     return new Promise(function (resolve) {
+//         setTimeout(resolve, seconds * 1000);
+//     });
+// }
+
+// wait(1)
+//     .then(() => {
+//         console.log("1 seconds passed")
+//         return wait(1);
+//     })
+//     .then(() => {
+//         console.log("2 seconds passed")
+//         return wait(1);
+//     })
+//     .then(() => {
+//         console.log("3 seconds passed")
+//         return wait(1);
+//     })
+//     .then(() => {
+//         console.log("4 seconds passed")
+//         return wait(1);
+//     })
+//     .then(() => console.log("waited for 5 sec"))
+
+
+// Promise.resolve('abc').then(x => console.log(x));
+// Promise.reject(new Error('Prob!')).catch(x => console.error(x));
+
+
+// Navigator 
+
+
+
+const getLocation = function () {
+    return new Promise(function (resolve, reject) {
+        // navigator.geolocation.getCurrentPosition(position => resolve(position), err => reject(err));4
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+        console.log("getting position");
     });
 }
-
-wait(2).then(() => {
-    console.log("Waited for 2 sec")
-    return wait(1);
-}).then(() => console.log("waited for 1 sec"))
