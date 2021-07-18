@@ -934,18 +934,27 @@ TEST COORDINATES 2: -33.933, 18.474
 
 // Understanding callback queue and event loop
 
-console.log("Test start");
-// This goes into callback queue  Hence zero seconds are not a garuntee 
-setTimeout(() => console.log("0 sec timer"), 0);
-// Building a promise -->>
-// This goes into microtask queue Hence executed 1st 
-Promise.resolve('Resolved promise').then(res => console.log(res));
+// console.log("Test start");
+// // This goes into callback queue  Hence zero seconds are not a garuntee 
+// setTimeout(() => console.log("0 sec timer"), 0);
+// // Building a promise -->>
+// // This goes into microtask queue Hence executed 1st 
+// Promise.resolve('Resolved promise').then(res => console.log(res));
 
-Promise.resolve('Resolved promise 2').then(res => {
-    for (let i = 0; i < 10000; i++) {
+// Promise.resolve('Resolved promise 2').then(res => {
+//     for (let i = 0; i < 10000; i++) {
 
+//     }
+//     console.log(res);
+// })
+
+// console.log("Test End");
+
+// Promise constructor --->>>
+// Executor function    
+const lotteryPromise = new Promise(function (resolve, reject) {
+    if (Math.random() >= 0.5) {
+        resolve();
     }
-    console.log(res);
-})
-
-console.log("Test End");
+    else reject;
+});
