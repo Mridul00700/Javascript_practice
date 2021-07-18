@@ -953,8 +953,28 @@ TEST COORDINATES 2: -33.933, 18.474
 // Promise constructor --->>>
 // Executor function    
 const lotteryPromise = new Promise(function (resolve, reject) {
-    if (Math.random() >= 0.5) {
-        resolve();
-    }
-    else reject;
+
+    console.log("Lottery draw is happening");
+    setTimeout(() => {
+        if (Math.random() >= 0.5) {
+            resolve("You Win!");
+        }
+        else reject(new Error('You Loose!'));
+
+    }, 500);
+
 });
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+
+// Promisifying setTimeout
+const wait = function (seconds) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, seconds * 1000);
+    });
+}
+
+wait(2).then(() => {
+    console.log("Waited for 2 sec")
+    return wait(1);
+}).then(() => console.log("waited for 1 sec"))
