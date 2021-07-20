@@ -1207,3 +1207,14 @@ Promise.race([
     getJson(`https://restcountries.eu/rest/v2/name/india?fullText=true`),
     timeout(0.1)
 ]).then(res => console.log(res[0])).catch(err => console.log(err))
+
+
+// Promise.allSettled   return the array of all the settled promises wheather it fails or is a success.. unlike all as it just shorts circuits when one is rejected. 
+
+Promise.allSettled([
+    Promise.resolve('Success'),
+    Promise.reject('Error'),
+    Promise.resolve('Success')
+]).then(res => console.log(res))
+
+
