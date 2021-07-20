@@ -1106,3 +1106,12 @@ const whereAmI = async function (country) {
 
 whereAmI('portugal');
 console.log("First");
+
+try {
+    let y = 1;
+    const x = 3;
+    x = 5;
+}
+catch (err) {
+    console.log(err.message);
+}
