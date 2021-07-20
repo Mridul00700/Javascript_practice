@@ -1120,33 +1120,33 @@ TEST COORDINATES 2: -33.933, 18.474
 // }
 
 
-const countriesContainer = document.querySelector('.countries');
+// const countriesContainer = document.querySelector('.countries');
 
-///////////////////////////////////////
-
-
-const renderCountry = (data, className = '') => {
-    const html =
-        `<article class="country ${className}">
-          <img class="country__img" src="${data.flag}" />
-          <div class="country__data">
-            <h3 class="country__name">${data.name}</h3>
-            <h4 class="country__region">${data.region}</h4>
-            <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(1)}M people</p>
-            <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
-            <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
-          </div>
-        </article>`
-
-    countriesContainer.insertAdjacentHTML('beforeend', html);
-    // countriesContainer.style.opacity = 1;
-}
+// ///////////////////////////////////////
 
 
-const renderError = function (msg) {
-    countriesContainer.insertAdjacentText('beforeend', msg)
-};
-// converts response to Json data.
+// const renderCountry = (data, className = '') => {
+//     const html =
+//         `<article class="country ${className}">
+//           <img class="country__img" src="${data.flag}" />
+//           <div class="country__data">
+//             <h3 class="country__name">${data.name}</h3>
+//             <h4 class="country__region">${data.region}</h4>
+//             <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(1)}M people</p>
+//             <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+//             <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+//           </div>
+//         </article>`
+
+//     countriesContainer.insertAdjacentHTML('beforeend', html);
+//     // countriesContainer.style.opacity = 1;
+// }
+
+
+// const renderError = function (msg) {
+//     countriesContainer.insertAdjacentText('beforeend', msg)
+// };
+// // converts response to Json data.
 const getJson = function (url, errormessage = "Something went wrong") {
     return fetch(url).then(response => {
         if (!response.ok) {
@@ -1154,29 +1154,42 @@ const getJson = function (url, errormessage = "Something went wrong") {
         }
         return response.json()
     });
-}
+};
 
-const get3Countries = async function (c1, c2, c3) {
+// const get3Countries = async function (c1, c2, c3) {
 
-    try {
+//     try {
 
-        // const [data1] = await getJson(`https://restcountries.eu/rest/v2/name/${c1}?fullText=true`);
-        // const [data2] = await getJson(`https://restcountries.eu/rest/v2/name/${c2}?fullText=true`);
-        // const [data3] = await getJson(`https://restcountries.eu/rest/v2/name/${c3}?fullText=true`);
+//         // const [data1] = await getJson(`https://restcountries.eu/rest/v2/name/${c1}?fullText=true`);
+//         // const [data2] = await getJson(`https://restcountries.eu/rest/v2/name/${c2}?fullText=true`);
+//         // const [data3] = await getJson(`https://restcountries.eu/rest/v2/name/${c3}?fullText=true`);
 
-        // To run con-currently --> 
-        // Promise.all is rejects all the promise if anyone fails
-        const [[data1], [data2], [data3]] = await Promise.all([
-            getJson(`https://restcountries.eu/rest/v2/name/${c1}?fullText=true`),
-            getJson(`https://restcountries.eu/rest/v2/name/${c2}?fullText=true`),
-            getJson(`https://restcountries.eu/rest/v2/name/${c3}?fullText=true`)
-        ]);
+//         // To run con-currently --> 
+//         // Promise.all is rejects all the promise if anyone fails
+//         const [[data1], [data2], [data3]] = await Promise.all([
+//             getJson(`https://restcountries.eu/rest/v2/name/${c1}?fullText=true`),
+//             getJson(`https://restcountries.eu/rest/v2/name/${c2}?fullText=true`),
+//             getJson(`https://restcountries.eu/rest/v2/name/${c3}?fullText=true`)
+//         ]);
 
-        console.log([data1.capital, data2.capital, data3.capital]);
+//         console.log([data1.capital, data2.capital, data3.capital]);
 
-    } catch (err) {
-        console.log(err);
-    }
-}
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
 
-get3Countries('portugal', 'canada', 'india');
+// get3Countries('portugal', 'canada', 'india');
+
+// Promise.race  First settled promise wins the race 
+// Very long running promise
+(async function () {
+    const response = await Promise.race([
+        getJson(`https://restcountries.eu/rest/v2/name/indiasdsd?fullText=true`),
+        getJson(`https://restcountries.eu/rest/v2/name/usa?fullText=true`),
+        getJson(`https://restcountries.eu/rest/v2/name/portugal?fullText=true`),
+
+    ]);
+
+    console.log(response[0]);
+})();
