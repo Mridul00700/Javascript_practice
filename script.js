@@ -1185,7 +1185,7 @@ const getJson = function (url, errormessage = "Something went wrong") {
 // Very long running promise
 (async function () {
     const response = await Promise.race([
-        getJson(`https://restcountries.eu/rest/v2/name/indiasdsd?fullText=true`),
+        getJson(`https://restcountries.eu/rest/v2/name/india?fullText=true`),
         getJson(`https://restcountries.eu/rest/v2/name/usa?fullText=true`),
         getJson(`https://restcountries.eu/rest/v2/name/portugal?fullText=true`),
 
@@ -1193,3 +1193,17 @@ const getJson = function (url, errormessage = "Something went wrong") {
 
     console.log(response[0]);
 })();
+// Timeout function
+
+const timeout = function (sec) {
+    return new Promise(function (_, reject) {
+        setTimeout(function () {
+            reject(new Error('Request took too long'));
+        }, sec * 1000)
+    });
+};
+
+Promise.race([
+    getJson(`https://restcountries.eu/rest/v2/name/india?fullText=true`),
+    timeout(0.1)
+]).then(res => console.log(res[0])).catch(err => console.log(err))
