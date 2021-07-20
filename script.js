@@ -1069,7 +1069,60 @@ TEST COORDINATES 2: -33.933, 18.474
 // }).then(() => {
 //     image.style.display = 'none'
 // }).catch(err => console.error(err));
+// const countriesContainer = document.querySelector('.countries');
+
+
+// const renderCountry = (data, className = '') => {
+//     const html =
+//         `<article class="country ${className}">
+//           <img class="country__img" src="${data.flag}" />
+//           <div class="country__data">
+//             <h3 class="country__name">${data.name}</h3>
+//             <h4 class="country__region">${data.region}</h4>
+//             <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(1)}M people</p>
+//             <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+//             <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+//           </div>
+//         </article>`
+
+//     countriesContainer.insertAdjacentHTML('beforeend', html);
+//     // countriesContainer.style.opacity = 1;
+// }
+
+
+// // Async - Await 
+
+// // Async is running in background not in call stack
+// const whereAmI = async function (country) {
+//     try {
+//         // fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`).then(res => console.log(res));
+
+//         const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`);
+//         const data = await res.json();
+//         console.log(data);
+//         renderCountry(data[0]);
+//     } catch (err) {
+//         console.error(err);
+//     }
+
+// }
+
+// whereAmI('portugal');
+// console.log("First");
+
+// try {
+//     let y = 1;
+//     const x = 3;
+//     y = 5;
+// }
+// catch (err) {
+//     console.log(err.message);
+// }
+
+
 const countriesContainer = document.querySelector('.countries');
+
+///////////////////////////////////////
 
 
 const renderCountry = (data, className = '') => {
@@ -1090,28 +1143,40 @@ const renderCountry = (data, className = '') => {
 }
 
 
-// Async - Await 
-
-// Async is running in background not in call stack
-const whereAmI = async function (country) {
-
-    // fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`).then(res => console.log(res));
-
-    const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`);
-    const data = await res.json();
-    console.log(data);
-    renderCountry(data[0]);
-
+const renderError = function (msg) {
+    countriesContainer.insertAdjacentText('beforeend', msg)
+};
+// converts response to Json data.
+const getJson = function (url, errormessage = "Something went wrong") {
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            throw new Error(`${errormessage} ${response.status}`)
+        }
+        return response.json()
+    });
 }
 
-whereAmI('portugal');
-console.log("First");
+const get3Countries = async function (c1, c2, c3) {
 
-try {
-    let y = 1;
-    const x = 3;
-    x = 5;
+    try {
+
+        // const [data1] = await getJson(`https://restcountries.eu/rest/v2/name/${c1}?fullText=true`);
+        // const [data2] = await getJson(`https://restcountries.eu/rest/v2/name/${c2}?fullText=true`);
+        // const [data3] = await getJson(`https://restcountries.eu/rest/v2/name/${c3}?fullText=true`);
+
+        // To run con-currently --> 
+        // Promise.all is rejects all the promise if anyone fails
+        const [[data1], [data2], [data3]] = await Promise.all([
+            getJson(`https://restcountries.eu/rest/v2/name/${c1}?fullText=true`),
+            getJson(`https://restcountries.eu/rest/v2/name/${c2}?fullText=true`),
+            getJson(`https://restcountries.eu/rest/v2/name/${c3}?fullText=true`)
+        ]);
+
+        console.log([data1.capital, data2.capital, data3.capital]);
+
+    } catch (err) {
+        console.log(err);
+    }
 }
-catch (err) {
-    console.log(err.message);
-}
+
+get3Countries('portugal', 'canada', 'india');
