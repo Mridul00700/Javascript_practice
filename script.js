@@ -1030,43 +1030,54 @@ TEST COORDINATES 2: -33.933, 18.474
 
 // GOOD LUCK 😀
 
-const imgContainer = document.querySelector('.container');
+// const imgContainer = document.querySelector('.container');
 
-const wait = function (seconds) {
-    return new Promise(function (resolve) {
-        setTimeout(resolve, seconds * 1000);
-    });
+// const wait = function (seconds) {
+//     return new Promise(function (resolve) {
+//         setTimeout(resolve, seconds * 1000);
+//     });
+// }
+
+// let image;
+
+// const createImage = function (imgPath) {
+//     return new Promise(function (resolve, reject) {
+//         image = document.createElement('img');
+//         image.src = imgPath;
+
+//         image.addEventListener('load', () => {
+//             imgContainer.append(image);
+//             resolve(image)
+//         });
+
+//         image.addEventListener('error', () => {
+//             reject(new Error("Image not found"));
+//         });
+//     });
+// }
+
+// createImage('./img-1.jpg').then(img => {
+//     console.log("image 1 loaded!");
+//     return wait(2);
+// }).then(() => {
+//     image.style.display = 'none';
+//     return createImage('./img-2.jpg');
+// }).then(img => {
+//     image = img;
+//     console.log("Image 2 loaded");
+//     return wait(2);
+// }).then(() => {
+//     image.style.display = 'none'
+// }).catch(err => console.error(err));
+
+// Async - Await 
+
+// Async is running in background not in call stack
+const whereAmI = async function (country) {
+
+    const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`);
+    console.log(res);
 }
 
-let image;
-
-const createImage = function (imgPath) {
-    return new Promise(function (resolve, reject) {
-        image = document.createElement('img');
-        image.src = imgPath;
-
-        image.addEventListener('load', () => {
-            imgContainer.append(image);
-            resolve(image)
-        });
-
-        image.addEventListener('error', () => {
-            reject(new Error("Image not found"));
-        });
-    });
-}
-
-createImage('./img-1.jpg').then(img => {
-    console.log("image 1 loaded!");
-    return wait(2);
-}).then(() => {
-    image.style.display = 'none';
-    return createImage('./img-2.jpg');
-}).then(img => {
-    image = img;
-    console.log("Image 2 loaded");
-    return wait(2);
-}).then(() => {
-    image.style.display = 'none'
-}).catch(err => console.error(err));
-
+whereAmI('portugal');
+console.log("First");
