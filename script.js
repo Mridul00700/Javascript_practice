@@ -1306,3 +1306,14 @@ const createImage = function (imgPath) {
 
 // loadnPause();
 
+
+const loadAll = async function (imgArr) {
+
+    const imgs = imgArr.map(async (img) => await createImage(img));
+    console.log(imgs);
+    const imgafge = await Promise.all(imgs);
+    console.log(imgafge);
+
+}
+
+loadAll(['./img-1.jpg', './img-2.jpg', './img-3.jpg']);
