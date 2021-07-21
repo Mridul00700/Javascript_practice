@@ -1329,9 +1329,25 @@ TEST COORDINATES 2: -33.933, 18.474
 // Importing Module   
 
 // console.log("Importing Module");   import modules are hoisted and use strict modes
-import { addToCart } from './shoppingCart.js';
+// import { addToCart, tq, totalPrice as price } from './shoppingCart.js';
+
+// addToCart('bread', 5);
+// console.log(price, tq);
+
+// All modules at the same time..
+// import * as ShoppingCart from './shoppingCart.js';
+
+// ShoppingCart.addToCart('bread', 5);
+// console.log(ShoppingCart.price, ShoppingCart.tq);
 
 
 console.log("Importing Module");
 
-addToCart('bread', 5);
+import func, { cart } from './shoppingCart.js';
+
+func('pizza', 2);
+func('banana', 10);
+func('burger', 5);
+func('pasta', 3);
+
+console.log(cart);
