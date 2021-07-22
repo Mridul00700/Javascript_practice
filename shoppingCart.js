@@ -25,7 +25,7 @@
 
 // CommonJS
 
-export.addToCart = function (product, quantity) {
-    cart.push({ product, quantity });
-    console.log(`${quantity} ${product} was added to the cart.`);
-}
+// export.addToCart = function (product, quantity) {
+//     cart.push({ product, quantity });
+//     console.log(`${quantity} ${product} was added to the cart.`);
+// }

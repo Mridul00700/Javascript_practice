@@ -1,0 +1,22 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mridul00700/Javascript_practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mridul00700/Javascript_practice/issues"
+  },
+  "homepage": "https://github.com/Mridul00700/Javascript_practice#readme",
+  "dependencies": {
+    "leaflet": "^1.7.1"
+  }
+}
