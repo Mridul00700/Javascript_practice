@@ -1341,13 +1341,30 @@ TEST COORDINATES 2: -33.933, 18.474
 // console.log(ShoppingCart.price, ShoppingCart.tq);
 
 
-console.log("Importing Module");
+// console.log("Importing Module");
 
-import func, { cart } from './shoppingCart.js';
+// import func, { cart } from './shoppingCart.js';
 
-func('pizza', 2);
-func('banana', 10);
-func('burger', 5);
-func('pasta', 3);
+// func('pizza', 2);
+// func('banana', 10);
+// func('burger', 5);
+// func('pasta', 3);
 
-console.log(cart);
+// console.log(cart);
+
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+
+const state = {
+    cart: [
+        { products: 'bread', quantity: 5 },
+        { products: 'bread', quantity: 5 },
+    ],
+    user: { loggedIn: true }
+};
+
+const stateClone = Object.assign({}, state);
+console.log(stateClone);
+
+state.user.loggedIn = false;
+console.log(stateClone);
