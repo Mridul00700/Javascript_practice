@@ -1352,24 +1352,24 @@ TEST COORDINATES 2: -33.933, 18.474
 
 // console.log(cart);
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 
 
-const state = {
-    cart: [
-        { products: 'bread', quantity: 5 },
-        { products: 'bread', quantity: 5 },
-    ],
-    user: { loggedIn: true }
-};
+// const state = {
+//     cart: [
+//         { products: 'bread', quantity: 5 },
+//         { products: 'bread', quantity: 5 },
+//     ],
+//     user: { loggedIn: true }
+// };
 
-const stateClone = Object.assign({}, state);
-const stateCloneDeep = cloneDeep(state);
+// const stateClone = Object.assign({}, state);
+// const stateCloneDeep = cloneDeep(state);
 
-state.user.loggedIn = false;
-console.log(stateClone);
-console.log(stateCloneDeep);
+// state.user.loggedIn = false;
+// console.log(stateClone);
+// console.log(stateCloneDeep);
 
-
+// Clean code 
 
 
