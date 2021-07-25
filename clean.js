@@ -1,44 +1,47 @@
-var sc = [
+const sc = [
   { product: 'bread', quantity: 6 },
   { product: 'pizza', quantity: 2 },
   { product: 'milk', quantity: 4 },
   { product: 'water', quantity: 10 },
 ];
 
-var allow = {
+const allow = {
   lisbon: 5,
   others: 7,
 };
 
-var description = '';
+let description = '';
 
-var check = function (city) {
+const check = function (city) {
   if (sc.length > 0) {
-    var allowed;
-    if (city == 'lisbon') {
-      allowed = allow.lisbon;
-    } else {
-      allowed = allow.others;
-    }
+    let allowed;
+    city === 'lisbon' ? allowed = allow.lisbon : allowed = allow.others;
+    // if (city == 'lisbon') {
+    //   allowed = allow.lisbon;
+    // } else {
+    //   allowed = allow.others;
+    // }
 
-    for (item of sc) {
-      if (item.quantity > allowed) item.quantity = allowed;
+    for (const item of sc) {
+      item.quantity > allowed ? item.quantity = allowed : null;
     }
   }
 };
 check('lisbon');
 console.log(sc);
 
-var createDescription = function () {
-  var first = sc[0];
-  var p = first.product;
-  var q = first.quantity;
+const createDescription = function () {
+  const first = sc[0];
+  const p = first.product;
+  const q = first.quantity;
 
-  if (sc.length > 1) {
-    description = 'Order with ' + q + ' ' + p + ', etc...';
-  } else {
-    description = 'Order with ' + q + ' ' + p + '.';
-  }
+  sc.length > 1 ? description = `Order with  ${q}   ${p} , etc...` : description = `Order with  ${q} ${p} .`
+
+  // if (sc.length > 1) {
+  //   description = 'Order with ' + q + ' ' + p + ', etc...';
+  // } else {
+  //   description = 'Order with ' + q + ' ' + p + '.';
+  // }
 };
 createDescription();
 
